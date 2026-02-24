@@ -3,9 +3,12 @@ package tdd;
 public class SmartDoorLockImpl implements SmartDoorLock{
     private boolean isLocked;
     private boolean isPinSet = false;
+    private int pin;
 
     @Override
     public void setPin(int pin) {
+        this.isPinSet = true;
+        this.pin = pin;
     }
 
     @Override
@@ -17,11 +20,12 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (!isPinSet){
             throw new IllegalStateException();
         }
+        this.isLocked = true;
     }
 
     @Override
     public boolean isLocked() {
-        return isLocked;
+        return this.isLocked;
     }
 
     @Override

@@ -23,4 +23,18 @@ public class SmartDoorLockTest {
         assertThrows(IllegalStateException.class, () -> smartDoorLock.lock());
     }
 
+    private void setPin(){
+        final int pin = 1234;
+        smartDoorLock.setPin(pin);
+    }
+
+    @Test
+    public void testLockPinSet(){
+        setPin();
+        smartDoorLock.lock();
+        assertTrue(smartDoorLock.isLocked());
+    }
+
+
+
 }
