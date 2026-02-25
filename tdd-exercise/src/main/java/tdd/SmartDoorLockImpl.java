@@ -62,6 +62,9 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void reset() {
-
+        this.isBlocked = false;
+        this.isLocked = false;
+        this.isPinSet = false;
+        this.failedAttempts = 0;
     }
 }

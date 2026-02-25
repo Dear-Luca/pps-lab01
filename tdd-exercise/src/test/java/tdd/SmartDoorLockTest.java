@@ -55,13 +55,46 @@ public class SmartDoorLockTest {
         assertTrue(smartDoorLock.isLocked());
     }
 
-    @Test
-    public void testIsBlocked(){
+    private void blockDoor(){
         setPinAndLock();
         for (int i = 0; i < smartDoorLock.getMaxAttempts(); i++) {
             smartDoorLock.unlock(WRONG_PIN);
         }
+    }
+
+    private void blockDoorAndReset(){
+        blockDoor();
+        smartDoorLock.reset();
+    }
+
+    @Test
+    public void testIsBlocked(){
+        blockDoor();
         assertThrows(IllegalStateException.class, () -> smartDoorLock.unlock(PIN));
+    }
+
+    @Test
+    public void testResetBlockedState(){
+        blockDoorAndReset();
+        assertFalse(smartDoorLock.isBlocked());
+    }
+
+    @Test
+    public void testResetLockedState(){
+        blockDoorAndReset();
+        assertFalse(smartDoorLock.isLocked());
+    }
+
+    @Test
+    public void testResetPin(){
+        blockDoorAndReset();
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.lock());
+    }
+
+    @Test
+    public void testResetFailedAttempts(){
+        blockDoorAndReset();
+        assertEquals(0, smartDoorLock.getFailedAttempts());
     }
 
 }
