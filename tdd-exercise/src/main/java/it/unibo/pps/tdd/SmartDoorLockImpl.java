@@ -1,4 +1,4 @@
-package tdd;
+package it.unibo.pps.tdd;
 
 public class SmartDoorLockImpl implements SmartDoorLock{
     private boolean isLocked = false;
@@ -20,6 +20,9 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
+        if (!isLocked){
+            throw new IllegalStateException("Door already unlocked");
+        }
         if (isBlocked){
             throw new IllegalStateException("Door is blocked, reset needed.");
         }

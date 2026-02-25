@@ -55,6 +55,11 @@ public class SmartDoorLockTest {
         assertTrue(smartDoorLock.isLocked());
     }
 
+    @Test
+    public void testUnlockWhenAlreadyLock(){
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.unlock(PIN));
+    }
+
     private void blockDoor(){
         setPinAndLock();
         for (int i = 0; i < smartDoorLock.getMaxAttempts(); i++) {
