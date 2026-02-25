@@ -1,9 +1,18 @@
 package tdd;
 
 public class SmartDoorLockImpl implements SmartDoorLock{
-    private boolean isLocked;
+    private boolean isLocked = false;
+    private boolean isBlocked = false;
     private boolean isPinSet = false;
     private int pin;
+    private final int maxAttempts;
+    private int failedAttempts = 0;
+
+    public SmartDoorLockImpl(int maxAttempts) {
+        this.maxAttempts = maxAttempts;
+    }
+
+
 
     @Override
     public void setPin(int pin) {
@@ -15,6 +24,10 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     public void unlock(int pin) {
         if (pin == this.pin){
             this.isLocked = false;
+        } else if (failedAttempts < maxAttempts - 1){
+            this.failedAttempts += 1;
+        } else {
+            this.isBlocked = true;
         }
     }
 
@@ -33,17 +46,17 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public boolean isBlocked() {
-        return false;
+        return this.isBlocked;
     }
 
     @Override
     public int getMaxAttempts() {
-        return 0;
+        return this.maxAttempts;
     }
 
     @Override
     public int getFailedAttempts() {
-        return 0;
+        return this.failedAttempts;
     }
 
     @Override
