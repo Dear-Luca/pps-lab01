@@ -1,6 +1,6 @@
-package example.model;
+package it.unibo.pps.model;
 
-public abstract class AbstractBankAccount implements BankAccount{
+public abstract class AbstractBankAccount implements BankAccount {
     private double balance;
     private final AccountHolder holder;
 

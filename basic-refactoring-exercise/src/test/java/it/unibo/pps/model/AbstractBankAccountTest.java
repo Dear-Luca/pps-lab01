@@ -1,7 +1,5 @@
-import example.model.AccountHolder;
-import example.model.BankAccount;
-import example.model.SimpleBankAccount;
-import example.model.SimpleBankAccountWithFee;
+package it.unibo.pps.model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +20,7 @@ public abstract class AbstractBankAccountTest {
         bankAccount = initBankAccount(accountHolder, INITIAL_BALANCE);
     }
 
-    abstract BankAccount initBankAccount(AccountHolder accountHolder, double initialBalance);
+    abstract AbstractBankAccount initBankAccount(AccountHolder accountHolder, double initialBalance);
 
     @Test
     void testInitialBalance() {
@@ -57,7 +55,7 @@ public abstract class AbstractBankAccountTest {
             assertEquals(AMOUNT - WITHDRAW_AMOUNT - FEE, bankAccount.getBalance());
         }
     }
-    
+
     @Test
     void testWrongWithdraw() {
         depositAndWithDraw(ID + 1);

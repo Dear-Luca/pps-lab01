@@ -1,4 +1,4 @@
-package example.model;
+package it.unibo.pps.model;
 
 public class SimpleBankAccountWithFee extends AbstractBankAccount{
     private static final int FEE = 1;

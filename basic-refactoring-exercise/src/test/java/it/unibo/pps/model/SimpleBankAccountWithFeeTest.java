@@ -1,5 +1,4 @@
-import example.model.*;
-import org.junit.jupiter.api.BeforeEach;
+package it.unibo.pps.model;
 
 public class SimpleBankAccountWithFeeTest extends AbstractBankAccountTest{
 
