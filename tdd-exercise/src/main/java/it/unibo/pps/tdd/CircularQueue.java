@@ -20,4 +20,16 @@ public interface CircularQueue {
      * @return The fixed capacity of the queue.
      */
     int getFixedCapacity();
+
+    /**
+     * Push an element inside the queue.
+     * @param value of the element
+     */
+    void push(int value);
+
+    /**
+     * Gets the current size of the queue.
+     * @return The number of elements inside the queue.
+     */
+    int getSize();
 }
