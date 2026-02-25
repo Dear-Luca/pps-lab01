@@ -13,4 +13,11 @@ package it.unibo.pps.tdd;
  *   - Introduce methods in the interface in order to make the tests pass.
  *   - Refactor
  */
-public interface CircularQueue { }
+public interface CircularQueue {
+    /**
+     * Gets the dimension of the queue.
+     *
+     * @return The fixed capacity of the queue.
+     */
+    int getFixedCapacity();
+}

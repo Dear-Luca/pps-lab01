@@ -1,16 +1,26 @@
 package it.unibo.pps.tdd;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * The test suite for testing the CircularList implementation
  */
 public class CircularListTest {
-    @Test
-    public void todo() {
-        assertTrue(true);
+    private CircularQueue circularQueue;
+    private static final int CAPACITY = 10;
+    @BeforeEach
+    public void beforeEach(){
+        circularQueue = new CircularQueueImpl(CAPACITY);
     }
+
+    @Test
+    public void testCapacity(){
+        assertEquals(CAPACITY, circularQueue.getFixedCapacity());
+    }
+
+
 }
