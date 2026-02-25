@@ -1,4 +1,4 @@
-package tdd;
+package it.unibo.pps.tdd;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
