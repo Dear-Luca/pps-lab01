@@ -30,37 +30,38 @@ public class SmartDoorLockTest {
         smartDoorLock.setPin(PIN);
     }
 
-    @Test
-    public void testLockPinSet(){
+    private void setPinAndLock(){
         setPin();
         smartDoorLock.lock();
+    }
+
+    @Test
+    public void testLockPinSet(){
+        setPinAndLock();
         assertTrue(smartDoorLock.isLocked());
     }
 
     @Test
     public void testUnlockCorrectPin(){
-        setPin();
-        smartDoorLock.lock();
+        setPinAndLock();
         smartDoorLock.unlock(PIN);
         assertFalse(smartDoorLock.isLocked());
     }
 
     @Test
     public void testUnlockWrongPin(){
-        setPin();
-        smartDoorLock.lock();
+        setPinAndLock();
         smartDoorLock.unlock(WRONG_PIN);
         assertTrue(smartDoorLock.isLocked());
     }
 
     @Test
     public void testIsBlocked(){
-        setPin();
-        smartDoorLock.lock();
+        setPinAndLock();
         for (int i = 0; i < smartDoorLock.getMaxAttempts(); i++) {
             smartDoorLock.unlock(WRONG_PIN);
         }
-        assertTrue(smartDoorLock.isBlocked());
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.unlock(PIN));
     }
 
 }
