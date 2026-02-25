@@ -32,4 +32,19 @@ public interface CircularQueue {
      * @return The number of elements inside the queue.
      */
     int getSize();
+
+    /**
+     * Checks if the queue is empty.
+     *
+     * @return true if the queue is empty, false otherwise.
+     */
+    boolean isEmpty();
+
+    /**
+     * Retrieve and remove the oldest element.
+     * @return the oldest element in the queue.
+     */
+    int poll();
+
+    int getFirst();
 }

@@ -18,12 +18,32 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public void push(int value) {
+        if (queue.size() >= fixedCapacity){
+            queue.removeFirst();
+        }
         queue.add(value);
     }
 
     @Override
     public int getSize() {
         return this.queue.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
+
+    @Override
+    public int poll() {
+        int value = queue.getFirst();
+        queue.removeFirst();
+        return value;
+    }
+
+    @Override
+    public int getFirst() {
+        return queue.getFirst();
     }
 
 
