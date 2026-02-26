@@ -36,6 +36,9 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int poll() {
+        if (queue.isEmpty()){
+            throw new IllegalStateException("Queue is empty");
+        }
         int value = queue.getFirst();
         queue.removeFirst();
         return value;
@@ -43,9 +46,11 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int getFirst() {
+        if (queue.isEmpty()){
+            throw new IllegalStateException("Queue is empty");
+        }
         return queue.getFirst();
     }
-
 
 }
 

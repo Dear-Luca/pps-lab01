@@ -47,4 +47,5 @@ public interface CircularQueue {
     int poll();
 
     int getFirst();
+
 }
