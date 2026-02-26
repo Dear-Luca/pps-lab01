@@ -9,7 +9,6 @@ public abstract class AbstractBankAccountTest {
     private static final double INITIAL_BALANCE = 0;
     private static final double AMOUNT = 100;
     private static final double WITHDRAW_AMOUNT = 70;
-    private static final int FEE = 1;
     private static final int ID = 1;
     private AccountHolder accountHolder;
     private BankAccount bankAccount;
@@ -47,14 +46,13 @@ public abstract class AbstractBankAccountTest {
     }
 
     @Test
-    void testWithdraw() {
+    void testWithdraw(){
         depositAndWithDraw(accountHolder.id());
-        if (bankAccount instanceof SimpleBankAccount){
-            assertEquals(AMOUNT - WITHDRAW_AMOUNT, bankAccount.getBalance());
-        } else if (bankAccount instanceof SimpleBankAccountWithFee) {
-            assertEquals(AMOUNT - WITHDRAW_AMOUNT - FEE, bankAccount.getBalance());
-        }
+        assertEquals(AMOUNT - computeWithdraw(WITHDRAW_AMOUNT), bankAccount.getBalance());
     }
+
+
+    abstract double computeWithdraw(double withdrawAmount);
 
     @Test
     void testWrongWithdraw() {
