@@ -51,12 +51,22 @@ public class CircularListTest {
         assertEquals(0, circularQueue.getFirst());
     }
 
-    @Test
-    public void testCircularPush(){
+    private void fillQueue(){
         for (int i = 0; i < CAPACITY * 2; i++) {
             circularQueue.push(i);
         }
+    }
+
+    @Test
+    public void testCircularPushValue(){
+        fillQueue();
         assertEquals(CAPACITY, circularQueue.getFirst());
+    }
+
+    @Test
+    public void testCircularPushSize(){
+        fillQueue();
+        assertEquals(CAPACITY, circularQueue.getSize());
     }
 
     @Test
@@ -67,8 +77,5 @@ public class CircularListTest {
     @Test
     public void testGetFirstWithEmptyQueue(){
         assertThrows(IllegalStateException.class, () -> circularQueue.getFirst());
-
     }
-
-
 }
