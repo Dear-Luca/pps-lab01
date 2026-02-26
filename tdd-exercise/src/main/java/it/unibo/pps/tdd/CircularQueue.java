@@ -43,9 +43,15 @@ public interface CircularQueue {
     /**
      * Retrieve and remove the oldest element.
      * @return the oldest element in the queue.
+     * @throws IllegalStateException if the queue is empty.
      */
     int poll();
 
+    /**
+     * Return the head of the queue.
+     * @return the first element of the queue.
+     * @throws IllegalStateException if the queue is empty.
+     */
     int getFirst();
 
 }
